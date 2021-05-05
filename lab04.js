@@ -1,16 +1,21 @@
 let count = 0;
 const a = 1;
+const ps = require("prompt-sync");
+const prompt = ps();
 
-const add = (count,a) => count + a;
+let n = prompt("\nChoose an option: \n\n(+)\n(-)\n(q) for quit\n");
 
-const substract = (count,) => count - a;
-
-
-var n = console.log("Choose an option: \n");
-
-console.log("(+) (-)\n\n(q) for quit");
-
-
-
-
-
+while(n !== "q"){
+    const counter = (count, a) => {
+        if (n == "+") {
+            return counter = count + a;
+        }
+        else if (n == "-") {
+            return counter = count - a;
+        }
+        else {
+            console.log("\nInvalid command\n");
+            break;
+        }
+    }
+}
