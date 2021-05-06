@@ -1,6 +1,3 @@
-
-let counter = 0;
-const a = 1;
 const ps = require("prompt-sync");
 const prompt = ps();
 
@@ -9,14 +6,24 @@ function view(counter) {
 }
 
 function update(msg, counter) {
-    let msg = prompt("\n(+)  (-)\n");
-    if(msg = "+"){
+    const a = 1;
+    if (msg = "+") {
         return (counter + a);
     }
-    else if(msg = "-"){
+    else if (msg = "-") {
         return (counter - a);
     }
-    else{
+    else {
         return counter;
+    }
+}
+
+function app(counter) {
+    while (true) {
+        const currentView = view(counter);
+        console.clear();
+        console.log(`\nContador: ${currentView}\n`);
+        const msg = prompt("\n(+)  (-)\n");
+        counter = update(msg, counter);
     }
 }
