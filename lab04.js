@@ -1,16 +1,21 @@
 var prompt = require('prompt-sync')();
+var continueCounting = true;
+let a = 1;
 
 function view(counter) {
     return counter;
 }
 
 function update(msg, counter) {
-    let a = 1;
+
     if (msg == "+") {
         return (counter + a);
     }
     else if (msg == "-") {
         return (counter - a);
+    }
+    else if (msg == "q") {
+        return continueCounting = false;
     }
     else {
         return counter;
@@ -18,10 +23,11 @@ function update(msg, counter) {
 }
 
 function app(counter) {
-    while (true) {
-        const currentView = view(counter);
+
+    while (continueCounting) {
         console.clear();
-        console.log(`\nContador: ${currentView}`);
+        const currentView = view(counter);
+        console.log(`\nCount: ${currentView}`);
         const msg = prompt("\n(+)  (-)\n\n(q) to exit program\n\n");
         counter = update(msg, counter);
     }
